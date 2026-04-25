@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Fuegos del Valle | Pirotecnia Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0c12 0%, #0f111a 100%);
+            font-family: 'Inter', sans-serif;
+            color: #f0f2f5;
+            line-height: 1.4;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, #FFD966, #FF9F4A, #FF5E3A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 94, 58, 0.3);
+            letter-spacing: -0.02em;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b9c3e6;
+            margin-top: 0.75rem;
+            font-weight: 400;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 90, 50, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 94, 58, 0.5);
+            margin-top: 1rem;
+        }
+
+        .category {
+            background: rgba(18, 22, 35, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid rgba(255, 160, 80, 0.2);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .category:hover {
+            border-color: rgba(255, 140, 60, 0.5);
+            box-shadow: 0 25px 40px -14px black;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-left: 6px solid #FF7A2F;
+            padding-left: 1rem;
+        }
+
+        .category-title i {
+            color: #FF7A2F;
+            font-size: 1.8rem;
+        }
+
+        .subcategory {
+            margin-top: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+        }
+
+        .subcategory-header {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #FFC285;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px dashed rgba(255, 140, 70, 0.4);
+            padding-bottom: 0.5rem;
+        }
+
+        .subcategory-header i {
+            font-size: 1.3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.4rem;
+            margin-top: 0.6rem;
+        }
+
+        .product-card {
+            background: #0f111f;
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #2a2e44;
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF8C42;
+            box-shadow: 0 20px 25px -12px #ff6a2e30;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0.8rem;
+            margin-bottom: 1rem;
+            background: #1a1d2e;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-image:hover {
+            transform: scale(1.02);
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #2a2e44, #1a1d2e);
+            border-radius: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF8C42;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .product-name span:first-child {
+            background: linear-gradient(110deg, #fff, #FFD29B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .product-name:hover span:first-child {
+            background: linear-gradient(110deg, #FFD29B, #FFA559);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFB347;
+            margin: 0.6rem 0;
+        }
+
+        .price small {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #9aa2bf;
+        }
+
+        .stock-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 40px;
+            display: inline-block;
+            width: fit-content;
+            margin: 0.4rem 0 0.6rem;
+        }
+
+        .in-stock {
+            background: #1f3a2b;
+            color: #9bffb0;
+            border: 1px solid #2e7d4e;
+        }
+
+        .no-stock {
+            background: #3e2323;
+            color: #ffa098;
+            border: 1px solid #c24a3a;
+        }
+
+        .btn-buy {
+            background: linear-gradient(95deg, #FF5E2E, #FF3A1C);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 0;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: auto;
+            font-family: inherit;
+            border: 1px solid rgba(255, 100, 30, 0.6);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-buy:hover {
+            background: linear-gradient(95deg, #FF4820, #E62E0C);
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px #ff4d1e70;
+        }
+
+        .video-hint {
+            font-size: 0.7rem;
+            color: #FFB347;
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #7883a8;
+            border-top: 1px solid #2b2f45;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 680px) {
+            .category {
+                padding: 1rem;
+            }
+            .category-title {
+                font-size: 1.7rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-fire"></i> PIROTECNIA SJ <i class="fas fa-rocket"></i></h1>
+        <p>Espectáculo, potencia y seguridad · Envíos a todo el país</p>
+        <div class="badge"><i class="fab fa-instagram"></i> Comprá directo por Instagram</div>
+    </div>
+
+    <!-- ================= SECCIÓN 1: ESTRUENDOS ================= -->
+    <div class="category">
+        <div class="category-title">
+            <i class="fas fa-bomb"></i> 
+            <span>ESTRUENDOS</span>
+        </div>
+        <div class="products-grid">
+            <div class="product-card" data-video-url="https://www.youtube.com/shorts/j8Ge2UG-Llc">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YM26.jpg" alt="Mortero Thunder King" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🧨 Mortero Thunder King</span> <i class="fas fa-play-circle" style="color:#FF8C42; font-size:0.9rem;"></i></div>
+                <div class="price">$5.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Mortero Thunder King - $5000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YB25.jpg" alt="Base de misiles x25" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🚀 Base de misiles (25 unidades)</span> <i class="fas fa-play-circle" style="color:#FF8C42;"></i></div>
+                <div class="price">$7.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Base de misiles x25 - $7000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="ACA_VA_EL_LINK_DEL_VIDEO">
+                <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/119_2.jpg?rnd=787537096" alt="Fosforito" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>✨ Fosforito</span> <i class="fas fa-play-circle" style="color:#FF8C42;"></i></div>
+                <div class="price">$2.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Fosforito - $2000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="ACA_VA_EL_LINK_DEL_VIDEO">
+                <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/12325_2.jpg?rnd=1384692208" alt="Florerito" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🌸 Florerito</span> <i class="fas fa-play-circle" style="color:#FF8C42;"></i></div>
+                <div class="price">$3.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Florerito - $3000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SECCIÓN 2: CAÑAS VOLADORAS ================= -->
+    <div class="category">
+        <div class="category-title">
+            <i class="fas fa-arrow-up"></i>
+            <span>CAÑAS VOLADORAS</span>
+        </div>
+        <div class="products-grid">
+            <div class="product-card" data-video-url="ACA_VA_EL_LINK_DEL_VIDEO">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YC001S.jpg" alt="Caña voladora 30cm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🎍 Caña voladora 30cm · 2 unidades</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$3.500 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Caña voladora 30cm (2 unid) - $3500"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="ACA_VA_EL_LINK_DEL_VIDEO">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YC001S.jpg" alt="Caña silbadora" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🎵 Caña voladora SILBADORA 30cm</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$4.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Caña silbadora 30cm - $4000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="ACA_VA_EL_LINK_DEL_VIDEO">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YC041.jpg" alt="Caña 40cm estereo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🌈 Caña voladora 40cm · estéreo color</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$1.500 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Caña voladora 40cm estéreo color - $1500"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="https://www.youtube.com/watch?v=quS227ENxLs">
+                <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/15487_2.jpg?rnd=1227330583" alt="Caña nuclear" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>💥 CAÑA VOLADORA NUCLEAR</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$45.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Caña nuclear - $45000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SECCIÓN 3: MORTEROS ================= -->
+    <div class="category">
+        <div class="category-title">
+            <i class="fas fa-mortar-board"></i>
+            <span>MORTEROS</span>
+        </div>
+        <div class="products-grid">
+            <div class="product-card" data-video-url="https://www.youtube.com/watch?v=4dLfXa6abqo">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YM150.jpg" alt="Mortero Shell" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🧨 Mortero Shell 1.5 pulgadas · 6 cebollas</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$40.000 <small>ARS</small></div>
+                <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                <button class="btn-buy" data-product="Mortero Shell 1.5″ +6 cebollas - $40000"><i class="fab fa-instagram"></i> Comprar</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/BBA02.jpg" alt="Mortero estruendo 2,2 pulgadas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>💣 Mortero estruendo 2,2" · 6 cebollas</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YM200.jpg" alt="Mortero shell 2,2 pulgadas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🎆 Mortero shell 2,2 pulgadas · cebollas</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://www.pirotecniapow.com.ar/images/morteros/1410.jpg" alt="6 Bombas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🧨 6 BOMBAS · estruendo premium</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://www.pirotecniapow.com.ar/images/morteros/1406.jpg" alt="Reventón" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>💥 REVENTÓN · potencia máxima</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+            <div class="product-card" data-video-url="">
+                <img class="product-image" src="https://www.pirotecniapow.com.ar/images/morteros/1404.jpg" alt="Mortero color y estruendo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🎨 Mortero COLOR + ESTRUENDO</span> <i class="fas fa-play-circle"></i></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SECCIÓN 4: TORTAS · FAMILIA SHOW ================= -->
+    <div class="category">
+        <div class="category-title">
+            <i class="fas fa-cake-candles"></i>
+            <span>TORTAS · FAMILIA SHOW</span>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-header"><i class="fas fa-star"></i> MINI SHOW</div>
+            <div class="products-grid">
+                <!-- Producto existente BOLT -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=aoHw7oQewNU">
+                    <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/12876_2.jpg?rnd=21294735" alt="Bolt" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>⚡ BOLT · Mini show</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$11.000 <small>ARS</small></div>
+                    <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                    <button class="btn-buy" data-product="Bolt Mini show - $11000"><i class="fab fa-instagram"></i> Comprar</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: 48 Perlas (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=9FXM_wa1-QU">
+                    <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YT048.jpg" alt="48 Perlas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>✨ 48 PERLAS · Mini show</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: 96 Perlas (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=9FXM_wa1-QU">
+                    <img class="product-image" src="https://pirotecnia.com.ar/wp-content/uploads/YT096C.jpg" alt="96 Perlas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>💎 96 PERLAS · Mini show</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 12 tiros colores con trazante y titanio (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=yUoXOZ2-1Mg">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/4251A.jpg" alt="Show 12 tiros colores con trazante y titanio" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🎆 Show 12 tiros · Colores + Trazante + Titanio</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 12 tiros PEONY con trazante y estruendo (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=f0BPAdb2_5c">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/4255A.jpg" alt="Show 12 tiros PEONY con trazante y estruendo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🌸 Show 12 tiros PEONY · Trazante + Estruendo</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 25 tiros CRISANTEMOS de colores con trazante y estruendo (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=LZT6YDZfg1s">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/4245.jpg" alt="Show 25 tiros CRISANTEMOS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🌼 Show 25 tiros CRISANTEMOS · Colores + Trazante + Estruendo</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 25 tiros WILLOW dorado con punta azul (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=kslTb33hgK0">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/4245b.jpg" alt="Show 25 tiros WILLOW dorado" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🌾 Show 25 tiros WILLOW · Dorado + Punta Azul</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 49 tiros Colores y Cracker (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=MbIqPrB30go">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/4260.jpg" alt="Show 49 tiros Colores y Cracker" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🎇 Show 49 tiros · COLORES + CRACKER</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+
+                <!-- NUEVO: Show 49 tiros GLITTING Y CRACKER (SIN STOCK) -->
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=kI9034IWGqY">
+                    <img class="product-image" src="https://www.pirotecniapow.com.ar/images/mini-show/5248.jpg" alt="Show 49 tiros GLITTING Y CRACKER" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>✨ Show 49 tiros · GLITTING + CRACKER</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-header"><i class="fas fa-chart-line"></i> SHOWS MEDIANOS</div>
+            <div class="products-grid">
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=BDoT9VERru4">
+                    <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/218_2.jpg?rnd=1550991060" alt="Happy Show Mediano" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🎉 HAPPY · Show mediano</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$ — <small>SIN STOCK</small></div>
+                    <div class="stock-status no-stock"><i class="fas fa-ban"></i> Sin stock temporal</div>
+                    <button class="btn-buy disabled-btn" disabled style="opacity:0.6; background:#3a2a2a; cursor:not-allowed;"><i class="fab fa-instagram"></i> No disponible</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subcategory">
+            <div class="subcategory-header"><i class="fas fa-crown"></i> MEGA SHOWS</div>
+            <div class="products-grid">
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=vmq_petwi0o">
+                    <img class="product-image" src="https://rolandorivas.com.ar/uploads/centum/articles/home/15502_2.jpg?rnd=1054187069" alt="Lucky" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🍀 LUCKY · Mega show</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$90.000 <small>ARS</small></div>
+                    <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                    <button class="btn-buy" data-product="Lucky Mega Show - $90000"><i class="fab fa-instagram"></i> Comprar</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+                <div class="product-card" data-video-url="https://www.youtube.com/watch?v=ANV02tCs9fo">
+                    <img class="product-image" src="https://acdn-us.mitiendanube.com/stores/002/613/948/products/show-total-100t-7f94524bf5df483c4f17767084584541-1024-1024.webp" alt="Gran Show" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                    <div class="product-name"><span>🏆 GRAN SHOW · Mega show</span> <i class="fas fa-play-circle"></i></div>
+                    <div class="price">$90.000 <small>ARS</small></div>
+                    <div class="stock-status in-stock"><i class="fas fa-check-circle"></i> Disponible</div>
+                    <button class="btn-buy" data-product="Gran Show Mega - $90000"><i class="fab fa-instagram"></i> Comprar</button>
+                    <div class="video-hint"><i class="fas fa-video"></i> Click en nombre o imagen → Ver video</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SECCIÓN 5: SHOW DIURNO ================= -->
+    <div class="category">
+        <div class="category-title">
+            <i class="fas fa-sun"></i>
+            <span>SHOW DIURNO · Efectos de día</span>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <img class="product-image" src="https://acdn-us.mitiendanube.com/stores/002/613/948/products/rr-general-x1-579a9f8d9b3997a00b17240928734925-1024-1024.webp" alt="Bengalas colores diversos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🎆 Bengalas · colores diversos</span></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-times-circle"></i> Sin stock</div>
+                <button class="btn-buy disabled-btn" disabled><i class="fab fa-instagram"></i> No disponible</button>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://acdn-us.mitiendanube.com/stores/002/613/948/products/potes-rr1-c3a63710dbc07a667516835667567798-1024-1024.webp" alt="Potes de humo colores diversos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>💨 Potes de humo · colores diversos</span></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-times-circle"></i> Sin stock</div>
+                <button class="btn-buy disabled-btn" disabled><i class="fab fa-instagram"></i> No disponible</button>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="https://www.rolandorivas.com.ar/uploads/centum/articles/home/13260_3.jpg?rnd=669295057" alt="Tortas de humo colores diversos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i> Sin foto</div>
+                <div class="product-name"><span>🌫️ Tortas de humo · colores diversos</span></div>
+                <div class="price">$ — <small>SIN STOCK</small></div>
+                <div class="stock-status no-stock"><i class="fas fa-times-circle"></i> Sin stock</div>
+                <button class="btn-buy disabled-btn" disabled><i class="fab fa-instagram"></i> No disponible</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-fire-extinguisher"></i> Productos pirotécnicos autorizados · +18 · Comprá con responsabilidad. <br>
+        Todos los precios expresados en pesos argentinos.
+    </div>
+</div>
+
+<script>
+    const INSTA_URL = "https://www.instagram.com/pirotecnia_sj/";
+
+    function abrirVideo(cardElement) {
+        const videoUrl = cardElement.getAttribute('data-video-url');
+        if (videoUrl && videoUrl !== "" && videoUrl !== "ACA_VA_EL_LINK_DEL_VIDEO") {
+            window.open(videoUrl, '_blank');
+        } else {
+            alert("📹 Aún no se ha agregado un video para este producto. ¡Pronto lo tendremos disponible!");
+        }
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+        const nombreProducto = card.querySelector('.product-name');
+        const imagenProducto = card.querySelector('.product-image');
+        
+        if (nombreProducto) {
+            nombreProducto.addEventListener('click', (e) => {
+                e.stopPropagation();
+                abrirVideo(card);
+            });
+        }
+        
+        if (imagenProducto && !imagenProducto.hasAttribute('data-no-video')) {
+            imagenProducto.addEventListener('click', (e) => {
+                e.stopPropagation();
+                abrirVideo(card);
+            });
+        }
+    });
+
+    document.querySelectorAll('.btn-buy:not([disabled])').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open(INSTA_URL, '_blank');
+        });
+    });
+
+    document.querySelectorAll('.product-image').forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const placeholder = this.nextElementSibling;
+            if (placeholder && placeholder.classList.contains('placeholder-img')) {
+                placeholder.style.display = 'flex';
+            }
+        });
+    });
+</script>
+</body>
+</html>
